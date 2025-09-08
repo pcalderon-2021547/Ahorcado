@@ -1,0 +1,266 @@
+/* --- Estilos generales del cuerpo --- */
+body {
+    background-image: url('../img/espacio.gif'); /* tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* --- Contenedor principal --- */
+.main-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* --- Títulos --- */
+h1.titulo {
+    font-size:36px;
+    color:#fff;
+    margin-bottom:20px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.7);
+}
+h1#msg-final {
+    font-size:28px;
+    color:#ff4c4c;
+    transition:all .5s ease;
+    transform:scale(0);
+    min-height:50px;
+    margin-top:20px;
+    text-shadow: 0 0 10px rgba(255,0,0,0.7);
+}
+h3#acierto {
+    font-size:20px;
+    margin-top:10px;
+    color:#0ff;
+}
+
+/* --- Texto de intentos y número --- */
+h3 {
+    color: white; /* Texto "Intentos restantes" en blanco */
+}
+#intentos {
+    color: red; /* Número de intentos en rojo */
+    font-weight: bold;
+}
+
+/* --- Pista --- */
+#hueco-pista {
+    font-size:18px;
+    color:white; /* Ahora es blanco */
+    margin-bottom:20px;
+    text-align:center;
+    display:block;
+}
+
+/* --- Animaciones --- */
+.zoom-in {
+    transform: scale(1) !important;
+}
+.acierto {
+    animation: zoomInOut 1s ease;
+}
+@keyframes zoomInOut {
+    0%{ transform:scale(0); }
+    50%{ transform:scale(1); }
+    70%{ transform:scale(1); }
+    100%{ transform:scale(0); }
+}
+
+/* --- Colores de acierto/error --- */
+.rojo { color:red; }
+.verde { color:lime; }
+
+/* --- Palabra principal --- */
+h2.palabra {
+    text-align:center;
+    color:#0ff;
+    font-size:32px;
+    letter-spacing:6px;
+    margin-top:20px;
+    text-transform:uppercase;
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 0 10px rgba(0,255,255,0.7);
+}
+
+/* --- Contenedor de botones --- */
+#botones-container {
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    width:100%;
+}
+
+/* --- Botones generales --- */
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: all .3s ease;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* --- Botones de acción principal (Iniciar, Reiniciar, Reset) --- */
+button#iniciar,
+button#reiniciar,
+button#reset {
+    background-color: rgba(50,150,255,0.7);
+    color: white;
+    font-size: 16px;
+    padding: 12px 25px;
+    border: 2px solid rgba(50,150,255,0.9);
+    box-shadow: 0 0 15px rgba(50,150,255,0.7);
+    text-shadow: 0 0 6px rgba(255,255,255,0.6);
+    transition: all 0.4s ease;
+    animation: pulse 2s infinite;
+}
+button#iniciar:hover,
+button#reiniciar:hover,
+button#reset:hover {
+    background-color: rgba(50,180,255,0.8);
+    box-shadow: 0 0 25px rgba(50,180,255,0.9);
+    transform: translateY(-5px) scale(1.05);
+}
+button#iniciar:active,
+button#reiniciar:active,
+button#reset:active {
+    transform: scale(0.95);
+}
+button#iniciar:disabled,
+button#reiniciar:disabled,
+button#reset:disabled {
+    background-color: rgba(127,140,150,0.7);
+    cursor: not-allowed;
+}
+
+/* --- Animación pulsante --- */
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(50,150,255,0.5); }
+    50% { box-shadow: 0 0 25px rgba(50,180,255,0.9); }
+    100% { box-shadow: 0 0 10px rgba(50,150,255,0.5); }
+}
+
+/* --- Botones secundarios (Pista, Pausa) --- */
+button#pista,
+button#pausa {
+    background-color: rgba(255,50,50,0.7);
+    color: white;
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: 2px solid rgba(255,50,50,0.9);
+    box-shadow: 0 0 15px rgba(255,50,50,0.7);
+    text-shadow: 0 0 6px rgba(255,200,200,0.6);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    animation: swing 1.5s infinite alternate;
+}
+button#pista:hover,
+button#pausa:hover {
+    background-color: rgba(255,80,80,0.8);
+    box-shadow: 0 0 25px rgba(255,80,80,0.9);
+    transform: rotate(-3deg) scale(1.05);
+}
+button#pista:active,
+button#pausa:active {
+    transform: scale(0.95);
+}
+button#pista:disabled,
+button#pausa:disabled {
+    background-color: rgba(127,140,150,0.7);
+    cursor: not-allowed;
+}
+
+/* --- Animación swing --- */
+@keyframes swing {
+    0% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+/* --- Botones del abcdario --- */
+#abcdario {
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap:10px;
+    margin-top:20px;
+}
+#abcdario button {
+    font-size:18px;
+    padding:15px 20px;
+    border-radius:8px;
+    background-color: rgba(10,10,50,0.6);
+    color: rgb(255,230,0);
+    border:2px solid rgba(255,230,0,0.7);
+    text-transform:uppercase;
+    cursor:pointer;
+    transition: all .3s ease;
+    box-shadow: 0 0 8px rgba(255,230,0,0.5);
+}
+#abcdario button:hover {
+    background-color: rgba(30,30,80,0.8);
+    transform: scale(1.15) rotate(-2deg);
+    box-shadow: 0 0 20px rgba(255,230,0,0.9);
+}
+#abcdario button:disabled {
+    background-color: rgba(127,140,150,0.7);
+    cursor:not-allowed;
+    transform:none;
+}
+
+/* --- Ahorcado e imágenes --- */
+.ahorcado-imagen {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+.ahorcado-imagen img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+.fade-in {
+    opacity: 1 !important;
+    z-index: 2;
+}
+
+/* --- Temporizador --- */
+#temporizador {
+    position:absolute;
+    top:10%;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:40px;
+    background-color: rgba(0,0,0,0.7);
+    color:white;
+    padding:20px 30px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    font-weight:bold;
+    text-align:center;
+    text-shadow: 0 0 8px #0ff;
+}
